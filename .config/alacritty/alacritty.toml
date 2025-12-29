@@ -1,0 +1,20 @@
+[general]
+import = [
+"~/.config/alacritty/catppuccin-latte.toml",
+]
+
+[window]
+dimensions = { columns = 98, lines = 28 }
+padding = { x = 2, y = 2 }
+
+[font]
+size = 16.0
+normal = { family = "Inconsolata Nerd Font Mono", style = "Regular" }
+bold = { family = "Inconsolata Nerd Font Mono", style = "Bold" }
+
+[colors]
+#cursor = { text = "CellBackground", cursor = "#c4555b" }
+cursor = { text = "CellBackground", cursor = "#fb4934" }
+vi_mode_cursor = { text = "CellBackground", cursor = "#a500c9" }
+
+
