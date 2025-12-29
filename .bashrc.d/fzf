@@ -1,0 +1,34 @@
+
+#######
+# FZF #
+#######
+
+[ -f /usr/share/fzf/shell/key-bindings.bash ] && source /usr/share/fzf/shell/key-bindings.bash
+# source /usr/share/fzf/completion.bash
+# 
+# fman() {
+# 	man -k . | fzf --prompt='Man> ' | awk '{print $1}' | xargs -r man
+# }
+# 
+# fo() {
+# 	local datei=$(fzf --exit-0)
+# 
+# 	case "$(file -bi $datei)" in
+# 		*/pdf*)
+# 			zathura $datei & disown
+# 			;;
+# 		*/jpg*|*/jpeg*|*/png*|*/svg* )
+# 			ristretto $datei & disown
+# 			;;
+# 		text/plain*)
+# 			alacritty -e vim $datei & disown
+# 			;;
+# 		*)
+# 			echo "Kein Standardprogramm vorhanden."
+# 			;;
+# 	esac
+# }
+# 
+# ftex() {
+# 	fd --type f --extension pdf . /usr/local/share/texmf/ | fzf --prompt='TEX-Docs>' | xargs -r zathura
+# }

@@ -1,0 +1,18 @@
+alias ..="cd .."
+alias ls="ls -hN --color=auto --group-directories-first"
+alias la="ls -a"
+alias ll="ls -la"
+
+alias trm="trash-put"
+alias rm='echo "Bitte trm benutzen. (oder \rm)."; false'
+# alias nv="nvim $(fzf)"
+
+# mount / umount donald via sshfs
+alias mount-donald="sshfs donald:/home/gerald ./donald-laptop"
+alias umount-donald="fusermount3 -u ./donald-laptop"
+
+# Konfigurationsdateien verwalten
+alias cfg="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+
+
+# vim:syntax=sh filetype=sh

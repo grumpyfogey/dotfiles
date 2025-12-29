@@ -1,0 +1,85 @@
+
+##########
+# Prompt #
+##########
+
+# Ganz alte Versuche mit tput
+#BLUE="\[$(tput setaf 31 ; tput bold)\]"
+#YELLOW="\[$(tput setaf 208 ; tput bold)\]"
+#WHITE="\[$(tput setaf 7 ; tput bold)\]"
+#RED="\[$(tput setaf 135 ; tput bold)\]"
+#NO_COLOUR="\[$(tput sgr0)\]"
+
+# Anlehnung an blackboard theme
+#FG=$(printf "\e[38;2;220;220;204m") # weiß
+#BG=$(printf "\e[48;2;12;16;33m") # blau
+#DIR_FG=$(printf "\e[38;2;247;219;45m") # helles gelb
+#DIR_BG=$(printf "\e[48;2;48;48;0m") # gelb-grün
+#ARROW=$(printf "\e[38;2;48;48;0m") # gelb-grün
+#
+#ROOT_BG=$(printf "\e[48;2;241;56;47m")
+#ROOT_ARROW=$(printf "\e[38;2;241;56;47m")
+
+# Anlehnung an zenburn theme
+# FG=$(printf "\e[38;2;220;220;204m") # weiß
+# BG=$(printf "\e[48;2;63;63;63m") # grau
+#BG=$(printf "\e[48;2;15;20;25m") # grau
+# DIR_FG=$(printf "\e[38;2;240;223;175m") # helles gelb
+#DIR_FG=$(printf "\e[38;2;247;219;45m") # helles gelb
+# DIR_BG=$(printf "\e[48;2;112;80;80m") # gelb-grün
+# ARROW=$(printf "\e[38;2;112;80;80m") # gelb-grün
+#ARROW=$(printf "\e[38;2;48;48;0m") # gelb-grün
+
+ROOT_BG=$(printf "\e[48;2;241;56;47m")
+ROOT_ARROW=$(printf "\e[38;2;241;56;47m")
+
+
+# Anpassungen an gruvbox
+# FG=$(printf "\e[38;2;253;244;193m") # fg0
+# BG=$(printf "\e[48;2;40;40;40m") # bg0
+# DIR_FG=$(printf "\e[38;2;253;244;193m") # selbes wie FG
+# DIR_BG=$(printf "\e[48;2;177;98;134m") # neutral purple
+# ARROW=$(printf "\e[38;2;177;98;134m") # neutral purple
+
+# Anpassungen an gruvbox
+FG=$(printf "\e[38;2;76;79;105m") # fg0
+BG=$(printf "\e[48;2;239;241;245m") # bg0
+DIR_FG=$(printf "\e[38;2;239;241;245m") # selbes wie BG, da FG (wie bei gruvbox kaum lesbar)
+DIR_BG=$(printf "\e[48;2;177;98;134m") # neutral purple
+ARROW=$(printf "\e[38;2;177;98;134m") # neutral purple
+RESET=$(printf "\e[0m")
+
+case $TERM in
+  xterm*|rxvt*|st*|alacritty)
+		TITLEBAR='\[\e]0;\u@\h -> \W\007\]' ;;
+  *)
+        TITLEBAR="" ;;
+esac
+
+#PS1="$TITLEBAR$YELLOW\w $WHITE:$NO_COLOUR "
+# $'' nicht $"" sonst wird \U... nicht als Unicode interpretiert
+# dafür müssen die Variablen mit printf definiert werden.
+# Sonderzeichen können mit 'xfd -fa "Inconsolate Nerd Font Mono"' gefunden werden
+# Cursor color wird in Alacritty gesetzt
+
+if [ "$EUID" -ne 0 ]; then 
+	export PS1=${TITLEBAR}$'\[$DIR_FG$DIR_BG\] \w \[$ARROW$BG\]\U00f85e\[$FG\] '
+else 
+	export PS1=${TITLEBAR}$'\[$DIR_FG$ROOT_BG\] \w \[$ROOT_ARROW$BG\]\U00f85e\[$FG\] '
+fi
+
+# login-shell
+if echo $0 | grep -e ^\- 2>&1>/dev/null; then
+	export PS1='\u@\h - \w > '
+fi
+
+PS2='> '
+PS4='+ '
+
+# Zenburn-Farben für 'ls --color'
+# https://github.com/ivoarch/dircolors-zenburn
+#eval $(dircolors -b $HOME/.dir_colors)
+
+
+
+# vim:syntax=sh filetype=sh

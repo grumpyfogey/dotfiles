@@ -1,0 +1,26 @@
+
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+###########
+# General #
+###########
+
+# Kein Limit für Bash-History (muus nur kleiner 0 sein)
+HISTSIZE=HISTFILESIZE=-1
+
+# kein C-s und C-q in terminal (C-s stoppt die Eingabe, C-q startet sie wieder)
+stty stop ''
+stty start ''
+stty -ixon
+stty -ixoff
+
+# TAB completiom bei sudo
+complete -cf sudo
+
+# Readline editing im vi-mode
+#set -o vi
+
+# vim:syntax=sh filetype=sh
+
