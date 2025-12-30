@@ -4,12 +4,19 @@
 #######
 
 [ -f /usr/share/fzf/shell/key-bindings.bash ] && source /usr/share/fzf/shell/key-bindings.bash
+
+# Completion wird in /etc/bash_completion.d/fzf erledigt
 # source /usr/share/fzf/completion.bash
-# 
-# fman() {
-# 	man -k . | fzf --prompt='Man> ' | awk '{print $1}' | xargs -r man
-# }
-# 
+
+# fd zum suchen benutzen
+# export FZF_DEFAULT_COMMAND='fd --type f --exclude .git'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+
+# man page search mit fzf
+fman() {
+	man -k . | fzf --prompt='Man> ' | awk '{print $1}' | xargs -r man
+}
+
 # fo() {
 # 	local datei=$(fzf --exit-0)
 # 
