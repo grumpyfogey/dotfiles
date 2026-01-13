@@ -15,4 +15,7 @@ alias umount-donald="fusermount3 -u ./donald-laptop"
 alias cfg="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 
+alias gcash="LANGUAGE=de_DE LANG=de_DE gnucash"
+
+
 # vim:syntax=sh filetype=sh
