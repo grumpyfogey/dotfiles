@@ -6,6 +6,7 @@ export XDG_CACHE_HOME=$HOME/.cache
 
 export EDITOR="/usr/bin/nvim"
 export BROWSER="/usr/bin/firefox"
+export LPDEST="HL-1430_on_Fritz"
 
 export MANPATH=$MANPATH:$HOME/.TinyTeX/texmf-dist/doc/man
 
